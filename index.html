@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>私の頭の中</title>
+    <style>
+        /* 拡大表示用のスタイル */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+        }
+        #overlay img {
+            max-width: 80%;
+            max-height: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* 画像とテキストを中央に表示するスタイル */
+        .image-container {
+            display: flex;
+            flex-direction: column; /* 縦に並べる */
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 画面の高さに合わせて中央に表示 */
+        }
+        .image-container img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+        .image-container p {
+            text-align: center; /* テキストを中央に配置 */
+            margin-top: 20px; /* テキストと画像の間に余白を追加 */
+        }
+        /* 背景色を追加 */
+        body {
+            background-color: #ff8a8a; /* 任意の背景色を指定 */
+        }
+    </style>
+</head>
+<body>
+    <h1>私の頭の中</h1>
+    <!-- 画像とテキストをクリックして拡大表示する -->
+    <div class="image-container" onclick="showImage(this.querySelector('img').src)">
+        <img src="image/1.png" alt="ベンチと鳩" width="750">
+        <p>ベンチに座り鳩と戯れています。</p>
+    </div>
+
+    <div class="image-container" onclick="showImage(this.querySelector('img').src)">
+        <img src="image/2.png" alt="鳩との戯れ" width="750">
+        <p>鳩に乗ることに成功しました。</p>
+    </div>
+
+    <div class="image-container" onclick="showImage(this.querySelector('img').src)">
+        <img src="image/3.png" alt="エイリアン奇襲" width="750">
+        <p>エイリアンが奇襲を仕掛けてきた！</p>
+    </div>
+
+    <div class="image-container" onclick="showImage(this.querySelector('img').src)">
+        <img src="image/4.png" alt="夕暮れ時" width="750">
+        <p>エイリアン達は地上を危険と思い高場で暮らすことにした。</p>
+    </div>
+
+    <!-- 拡大表示用のオーバーレイ要素 -->
+    <div id="overlay" onclick="hideImage()">
+        <img id="largeImage">
+    </div>
+
+    <script>
+        // 画像をクリックしたときに拡大表示する関数
+        function showImage(src) {
+            var largeImage = document.getElementById('largeImage');
+            largeImage.src = src;
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        // 拡大表示された画像を非表示にする関数
+        function hideImage() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
